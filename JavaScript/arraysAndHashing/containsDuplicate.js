@@ -26,8 +26,6 @@
 
 // Output: true
 
- 
-
 // Constraints:
 
 // 1 <= nums.length <= 105
@@ -35,19 +33,15 @@
 
 // ------------------------------------------------------------------------------------------------------------
 
-var containsDuplicate = function(nums) {
-  const uniqueNums = new Set(nums);
+function containsDuplicate(nums) {
+  const numSet = new Set();
 
-  return uniqueNums.size < nums.length;
-}
-
-var containsDuplicate2 = function(nums) {
-  const numMap = {};
-  for (let num of nums) {
-    if (numMap[num]) {
+  for (const num of nums) {
+    if (numSet.has(num)) {
       return true;
     }
-    numMap[num] = true;
+    numSet.add(num);
   }
   return false;
 }
+
