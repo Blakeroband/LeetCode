@@ -34,3 +34,17 @@
 // strs[i] consists of lowercase English letters.
 
 // ----------------------------------------------------------------------------------------------------
+
+function groupAnagrams(strs) {
+  const indexMap = new Map();
+
+  for (let i = 0; i < strs.length; i++) {
+    const sorted = strs[i].split('').sort().join('');
+    if (!indexMap.has(sorted)) {
+      indexMap.set(sorted, []);
+    }
+    indexMap.get(sorted).push(strs[i]);
+  }
+
+  return Array.from(indexMap.values());
+}
