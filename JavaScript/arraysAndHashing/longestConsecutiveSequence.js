@@ -23,3 +23,20 @@
 
 
 // ------------------------------------------------------------------------------------------------------------------------------
+function longestConsecutive(nums) {  // fuctntion to find longest consecutive sequence
+  const numSet = new Set(nums);  // create a set to store unique numbers
+  let longestStreak = 0; // variable to store the longest streak
+  for (const num of numSet) { // a for loop used to iterate through the newly created set
+    if (!numSet.has(num - 1)) { // check if the number is the start of a sequence
+      let currentNum = num; // variable to store the current number
+      let currentStreak = 1; // variable to store the current streak
+
+      while (numSet.has(currentNum + 1)) { // while loop used to check if the next number in the sequence exists
+        currentNum++; // if it does, increment the current number
+        currentStreak++; // also increment the current streak
+      }
+      longestStreak = Math.max(longestStreak, currentStreak); // update the longest streak if the current streak is greater
+    }
+  }
+  return longestStreak; // return the longest streak to the user
+}
